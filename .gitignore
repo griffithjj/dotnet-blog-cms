@@ -1,0 +1,9 @@
+# Build files
+obj/
+bin/
+
+# User project files
+*.csproj.user
+
+# Visual Studio
+.vs/
