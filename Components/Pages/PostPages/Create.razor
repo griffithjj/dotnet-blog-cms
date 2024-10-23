@@ -2,6 +2,7 @@
 
 @using Microsoft.EntityFrameworkCore
 @using BlogCms.Models
+@using Microsoft.AspNetCore.Components
 @inject IDbContextFactory<BlogCms.Data.ApplicationDbContext> DbFactory
 @inject NavigationManager NavigationManager
 
@@ -17,30 +18,30 @@
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" />
             <div class="mb-3">
-                <label for="title" class="form-label">Title:</label> 
-                <InputText id="title" @bind-Value="Post.Title" class="form-control" /> 
-                <ValidationMessage For="() => Post.Title" class="text-danger" /> 
-            </div>        
+                <label for="title" class="form-label">Title:</label>
+                <InputText id="title" @bind-Value="Post.Title" class="form-control" />
+                <ValidationMessage For="() => Post.Title" class="text-danger" />
+            </div>
             <div class="mb-3">
-                <label for="summary" class="form-label">Summary:</label> 
-                <InputText id="summary" @bind-Value="Post.Summary" class="form-control" /> 
-                <ValidationMessage For="() => Post.Summary" class="text-danger" /> 
-            </div>        
+                <label for="summary" class="form-label">Summary:</label>
+                <InputText id="summary" @bind-Value="Post.Summary" class="form-control" />
+                <ValidationMessage For="() => Post.Summary" class="text-danger" />
+            </div>
             <div class="mb-3">
-                <label for="content" class="form-label">Content:</label> 
-                <InputText id="content" @bind-Value="Post.Content" class="form-control" /> 
-                <ValidationMessage For="() => Post.Content" class="text-danger" /> 
-            </div>        
+                <label for="content" class="form-label">Content:</label>
+                <InputText id="content" @bind-Value="Post.Content" class="form-control" />
+                <ValidationMessage For="() => Post.Content" class="text-danger" />
+            </div>
             <div class="mb-3">
-                <label for="created" class="form-label">Created:</label> 
-                <InputDate id="created" @bind-Value="Post.Created" class="form-control" /> 
-                <ValidationMessage For="() => Post.Created" class="text-danger" /> 
-            </div>        
+                <label for="created" class="form-label">Created:</label>
+                <InputDate id="created" @bind-Value="Post.Created" class="form-control" />
+                <ValidationMessage For="() => Post.Created" class="text-danger" />
+            </div>
             <div class="mb-3">
-                <label for="lastupdated" class="form-label">LastUpdated:</label> 
-                <InputDate id="lastupdated" @bind-Value="Post.LastUpdated" class="form-control" /> 
-                <ValidationMessage For="() => Post.LastUpdated" class="text-danger" /> 
-            </div>        
+                <label for="lastupdated" class="form-label">LastUpdated:</label>
+                <InputDate id="lastupdated" @bind-Value="Post.LastUpdated" class="form-control" />
+                <ValidationMessage For="() => Post.LastUpdated" class="text-danger" />
+            </div>
             <button type="submit" class="btn btn-primary">Create</button>
         </EditForm>
     </div>
@@ -59,7 +60,7 @@
     public async Task AddPost()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Post.Add(Post);
+        context.Posts.Add(Post);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/posts");
     }

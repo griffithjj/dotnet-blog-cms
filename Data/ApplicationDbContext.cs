@@ -6,6 +6,6 @@ namespace BlogCms.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {
-        public DbSet<Post> Post { get; set; } = default!;
+        public DbSet<Post> Posts { get; set; } = default!;
     }
 }

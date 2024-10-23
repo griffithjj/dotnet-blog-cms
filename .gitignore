@@ -2,8 +2,15 @@
 obj/
 bin/
 
+# App settings
+appsettings.Development.json
+appsettings.Local.json
+
 # User project files
 *.csproj.user
 
 # Visual Studio
 .vs/
+
+# Jetbrains
+.idea/

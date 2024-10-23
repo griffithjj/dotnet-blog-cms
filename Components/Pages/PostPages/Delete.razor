@@ -2,6 +2,7 @@
 
 @using Microsoft.EntityFrameworkCore
 @using BlogCms.Models
+@using Microsoft.AspNetCore.Components
 @inject IDbContextFactory<BlogCms.Data.ApplicationDbContext> DbFactory
 @inject NavigationManager NavigationManager
 
@@ -55,7 +56,7 @@
     protected override async Task OnInitializedAsync()
     {
         using var context = DbFactory.CreateDbContext();
-        post = await context.Post.FirstOrDefaultAsync(m => m.Id == Id);
+        post = await context.Posts.FirstOrDefaultAsync(m => m.Id == Id);
 
         if (post is null)
         {
@@ -66,7 +67,7 @@
     public async Task DeletePost()
     {
         using var context = DbFactory.CreateDbContext();
-        context.Post.Remove(post!);
+        context.Posts.Remove(post!);
         await context.SaveChangesAsync();
         NavigationManager.NavigateTo("/posts");
     }
